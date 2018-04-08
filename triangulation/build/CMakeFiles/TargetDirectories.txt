@@ -1,0 +1,8 @@
+/home/xu/3weiConstruction/triangulation/build/CMakeFiles/rebuild_cache.dir
+/home/xu/3weiConstruction/triangulation/build/CMakeFiles/edit_cache.dir
+/home/xu/3weiConstruction/triangulation/build/CMakeFiles/install.dir
+/home/xu/3weiConstruction/triangulation/build/CMakeFiles/list_install_components.dir
+/home/xu/3weiConstruction/triangulation/build/CMakeFiles/part.dir
+/home/xu/3weiConstruction/triangulation/build/CMakeFiles/triangulation.dir
+/home/xu/3weiConstruction/triangulation/build/CMakeFiles/install/strip.dir
+/home/xu/3weiConstruction/triangulation/build/CMakeFiles/install/local.dir

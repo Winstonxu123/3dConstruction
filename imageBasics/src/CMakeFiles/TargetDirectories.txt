@@ -1,0 +1,3 @@
+/home/xu/3weiConstruction/imageBasics/src/CMakeFiles/edit_cache.dir
+/home/xu/3weiConstruction/imageBasics/src/CMakeFiles/rebuild_cache.dir
+/home/xu/3weiConstruction/imageBasics/src/CMakeFiles/imageBasics.dir

@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xu/3weiConstruction/featureExtraction/find_feature.cpp
+iostream
+-
+opencv2/core/core.hpp
+-
+opencv2/features2d/features2d.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+
+/home/xu/3weiConstruction/featureExtraction/pose_estimation_2d2d.cpp
+iostream
+-
+opencv2/features2d/features2d.hpp
+-
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+opencv2/calib3d/calib3d.hpp
+-
+opencv2/imgproc/imgproc.hpp
+-
+
