@@ -2,6 +2,7 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/features2d/features2d.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
 using namespace std;
 using namespace cv;
 
@@ -48,11 +49,54 @@ void findFeature(Mat img1, Mat img2, vector<KeyPoint>& keypoints_1, vector<KeyPo
        goodMatches.push_back(matches[i]);
     }
     
-    //draw matching result
-    Mat img_match;
-    Mat img_goodmatch;
-    drawMatches(img1, keypoints_1, img2, keypoints_2, matches, img_match);
-    drawMatches(img1, keypoints_1, img2, keypoints_2, goodMatches, img_goodmatch);
-    imshow("all points matching", img_match);
-    imshow("after optimization", img_goodmatch);
 }
+
+
+//sometimes this method is not as good as experience method
+void elimate_mismatching(vector<KeyPoint>& keypoints_1, vector<KeyPoint>& keypoints_2, vector<KeyPoint>& RP_keypoints_1, vector<KeyPoint>& RP_keypoints_2, vector<DMatch>& matches, vector<DMatch>& ransacMatches)
+{
+  vector<KeyPoint> R_keypoints_1, R_keypoints_2;
+  for (int i = 0; i < matches.size(); i++)
+  {
+    R_keypoints_1.push_back(keypoints_1[matches[i].queryIdx]);
+    R_keypoints_2.push_back(keypoints_2[matches[i].trainIdx]);
+  }
+  
+  vector<Point2f> p1, p2;
+  for (int i = 0; i < matches.size(); i++)
+  {
+    p1.push_back(R_keypoints_1[i].pt);
+    p2.push_back(R_keypoints_2[i].pt);
+  }
+  
+  vector<uchar> ransacStatus;
+  Mat fundamental = findFundamentalMat(p1, p2, ransacStatus, CV_FM_RANSAC);
+  
+  int index = 0;
+  for (int i = 0; i < matches.size(); i++)
+  {
+    if (ransacStatus[i] != 0)
+    {
+      RP_keypoints_1.push_back(R_keypoints_1[i]);
+      RP_keypoints_2.push_back(R_keypoints_2[i]);
+      matches[i].queryIdx  = index;
+      matches[i].trainIdx = index;
+      ransacMatches.push_back(matches[i]);
+      index++;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

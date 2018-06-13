@@ -1,0 +1,7 @@
+/home/xu/3weiConstruction/convert_to_pointcloud/build/CMakeFiles/install.dir
+/home/xu/3weiConstruction/convert_to_pointcloud/build/CMakeFiles/list_install_components.dir
+/home/xu/3weiConstruction/convert_to_pointcloud/build/CMakeFiles/rebuild_cache.dir
+/home/xu/3weiConstruction/convert_to_pointcloud/build/CMakeFiles/convert_to_pointcloud.dir
+/home/xu/3weiConstruction/convert_to_pointcloud/build/CMakeFiles/install/strip.dir
+/home/xu/3weiConstruction/convert_to_pointcloud/build/CMakeFiles/install/local.dir
+/home/xu/3weiConstruction/convert_to_pointcloud/build/CMakeFiles/edit_cache.dir

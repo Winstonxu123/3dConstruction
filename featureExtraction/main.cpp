@@ -13,6 +13,12 @@ using namespace cv;
  * ORB here
  * SIFT or SURF in laptop 
  **/
+//define function
+void findFeature(Mat img1, Mat img2, vector<KeyPoint>& keypoints_1, vector<KeyPoint>& keypoints_2, 
+		 vector<DMatch>& matches, vector<DMatch>& goodMatches);
+void pose_estimation_2d2d (vector<KeyPoint> keypoints_1,vector<KeyPoint> keypoints_2,
+		vector<DMatch> matches, Mat& R, Mat& t);
+void elimate_mismatching(vector<KeyPoint>& keypoints_1, vector<KeyPoint>& keypoints_2, vector<KeyPoint>& RP_keypoints_1, vector<KeyPoint>& RP_keypoints_2, vector<DMatch>& matches, vector<DMatch>& rasacMatches);
 
 int main(int argc, char **argv) {
     if (argc != 3)
@@ -25,21 +31,30 @@ int main(int argc, char **argv) {
     Mat img2=imread(argv[2]);
     
     std::vector<KeyPoint> keypoints_1, keypoints_2;
+    std::vector<KeyPoint> RP_keypoints_1, RP_keypoints_2;
     vector<DMatch> matches;
     std::vector<DMatch> goodMatches;
+    vector<DMatch> ransacMatches;
     Mat R,t;
-    
-    //define function
-    void findFeature(Mat img1, Mat img2, vector<KeyPoint>& keypoints_1, vector<KeyPoint>& keypoints_2, 
-		 vector<DMatch>& matches, vector<DMatch>& goodMatches);
-    void pose_estimation_2d2d (vector<KeyPoint> keypoints_1,vector<KeyPoint> keypoints_2,
-  vector<DMatch> matches, Mat& R, Mat& t);
     
     //call functions
     findFeature(img1, img2, keypoints_1, keypoints_2, matches, goodMatches);
+    elimate_mismatching(keypoints_1, keypoints_2, RP_keypoints_1, RP_keypoints_2, matches, ransacMatches);
+    
+    //draw matching result
+    Mat img_match;
+    Mat img_goodmatch;
+    Mat img_ransac_match;
+    drawMatches(img1, keypoints_1, img2, keypoints_2, matches, img_match);
+    drawMatches(img1, keypoints_1, img2, keypoints_2, goodMatches, img_goodmatch);
+    drawMatches(img1, RP_keypoints_1, img2, RP_keypoints_2, ransacMatches, img_ransac_match);
+    imshow("all points matching", img_match);
+    imshow("after optimization", img_goodmatch);
+    imshow("after ransac", img_ransac_match);
     waitKey(0);
     printf("Feature Extraction done!!! Then calculate POSE...\n");
-    pose_estimation_2d2d(keypoints_1, keypoints_2, matches, R, t); //here using matches, we can use goodMatches as well, which I think better.
+    
+    pose_estimation_2d2d(keypoints_1, keypoints_2, goodMatches, R, t); //here using matches, we can use goodMatches as well, which I think better.
     
     //convert R to Eigen::Matrix3d, then convert to Quanterniond
     Eigen::Matrix3d rotation_matrix;

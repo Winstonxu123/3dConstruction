@@ -6,7 +6,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
     cv::Mat image;
-    image=cv::imread("./1.jpg");
+    image=cv::imread("/home/xu/3weiConstruction/imageBasics/src/1.jpg");
     cv::imshow("img",image);
     cv::waitKey(0);
     return 0;

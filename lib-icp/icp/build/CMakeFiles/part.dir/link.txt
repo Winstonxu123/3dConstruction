@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -std=c++11 -O3 -DNDEBUG  -shared -Wl,-soname,libpart.so -o libpart.so CMakeFiles/part.dir/src/icpPointToPoint.cpp.o CMakeFiles/part.dir/src/kdtree.cpp.o CMakeFiles/part.dir/src/icp.cpp.o CMakeFiles/part.dir/src/icpPointToPlane.cpp.o CMakeFiles/part.dir/src/matrix.cpp.o 

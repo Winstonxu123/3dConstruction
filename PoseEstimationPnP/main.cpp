@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
     vector<Point3f> pts_3d;
     vector<Point2f> pts_2d;
     
-    for(DMatch m:matches)
+    for(DMatch m:goodMatches)
     {
       ushort d = depth.ptr<unsigned short>(int(keypoints_1[m.queryIdx].pt.y))[int(keypoints_1[m.queryIdx].pt.x)]; //get depth value
       if(d == 0) continue;

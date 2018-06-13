@@ -12,10 +12,11 @@ Point2f pixel2cam (const Point2d& p, const Mat& K);
 void bundleAdjustment(const vector<Point3f>& pts1, const vector<Point3f>& pts2, Mat& R, Mat& t);
 
 void pose_estimation_3d3d(const vector<Point3f>& pts1, const vector<Point3f>& pts2, Mat& R, Mat& t);
+
 int main(int argc, char **argv) {
     if (argc != 5)
     {
-      cout<<"Usage: featureExtraction img1 img2 depthImg1 depthImg2"<<endl;
+      cout<<"Usage: icp img1 img2 depthImg1 depthImg2"<<endl;
       return 0;
     }
     
@@ -35,7 +36,7 @@ int main(int argc, char **argv) {
     Mat K = (Mat_<double>(3,3) << 520.9, 0, 325.1, 0, 521.0, 249.7, 0, 0, 1);
     vector<Point3f> pts1;
     vector<Point3f> pts2;
-    for ( DMatch m:matches )
+    for ( DMatch m:goodMatches )
     {
         ushort d1 = depth1.ptr<unsigned short> ( int ( keypoints_1[m.queryIdx].pt.y ) ) [ int ( keypoints_1[m.queryIdx].pt.x ) ];
         ushort d2 = depth2.ptr<unsigned short> ( int ( keypoints_2[m.trainIdx].pt.y ) ) [ int ( keypoints_2[m.trainIdx].pt.x ) ];

@@ -118,23 +118,7 @@ int main(int argc, char **argv) {
     cout << "after filting, the number of point cloud : " << pointCloud->size() << endl;
     pcl::io::savePCDFileBinary("map_filted.pcd",*pointCloud);
     pcl::io::savePLYFileBinary("map_filted.ply",*pointCloud);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    pcl::io::savePLYFile("map_filted_2.ply", *pointCloud);
+  
     return 0;
 }

@@ -1,0 +1,4 @@
+[Project]
+Name=convert_to_pointcloud
+Manager=KDevCMakeManager
+VersionControl=

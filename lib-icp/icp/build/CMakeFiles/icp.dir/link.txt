@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -O3 -DNDEBUG   CMakeFiles/icp.dir/main.cpp.o  -o icp -rdynamic libpart.so -Wl,-rpath,/home/xu/3weiConstruction/lib-icp/icp/build 

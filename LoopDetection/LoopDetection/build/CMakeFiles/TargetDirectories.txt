@@ -1,0 +1,4 @@
+/home/xu/3weiConstruction/LoopDetection/LoopDetection/build/CMakeFiles/edit_cache.dir
+/home/xu/3weiConstruction/LoopDetection/LoopDetection/build/CMakeFiles/rebuild_cache.dir
+/home/xu/3weiConstruction/LoopDetection/LoopDetection/build/CMakeFiles/CalculateSimilarity.dir
+/home/xu/3weiConstruction/LoopDetection/LoopDetection/build/CMakeFiles/loopdetection.dir
